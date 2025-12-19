@@ -12,7 +12,7 @@
          </titleStmt>
          <publicationStmt>
             <publisher>University of Antwerp</publisher>
-            <date>8 December 2023</date>
+            <date>18 December 2025</date>
             <availability>
                <licence target="https://iiif.bodleian.ox.ac.uk/iiif/mirador/53fd0f29-d482-46e1-aa9d-37829b49987d">
                   <p>Original text by Mary Shelley (1816). Public domain, under a CC-BY-NC 4.0 licence.</p>
@@ -65,7 +65,7 @@
                "been watching for several nights."<lb/>
                "You have guessed right" I replied<lb/>
                "I have lately been so engaged in<lb/>
-               "several<add place="supralinear" hand="#PBS" rend="blackink"><del type="crossedOut" hand="#PBS" rend="blackink">studious</del> one</add> occupations that I did<lb/>
+               "several<add place="supralinear" hand="#PBS" rend="blackink"><del type="crossedOut" hand="#PBS" rend="blackink">studious</del> one</add> occupations that I <del type="crossedOut" hand="#MWS" rend="blackink">did</del><lb/>
                <add place="marginleft" hand="#PBS" rend="blackink">have</add>"not allow<add place="overwritten" hand="#PBS" rend="blackink">ed</add><add place="supralinear" hand="#MWS" rend="blackink">myself</add> sufficient rest as you<lb/>
             </p>
          </div>

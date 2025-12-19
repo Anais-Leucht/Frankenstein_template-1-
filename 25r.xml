@@ -12,7 +12,7 @@
          </titleStmt>
          <publicationStmt>
             <publisher>University of Antwerp</publisher>
-            <date>8 December 2023</date>
+            <date>19 December 2025</date>
             <availability>
                <licence target="https://iiif.bodleian.ox.ac.uk/iiif/mirador/53fd0f29-d482-46e1-aa9d-37829b49987d">
                   <p>Original text by Mary Shelley (1816). Public domain, under a CC-BY-NC 4.0 licence.</p>
@@ -37,10 +37,7 @@
             <p>
                <l>believe that so great a good fortune</l>
                <l>could have befallen me; but when</l>
-               <l>I 
-                   <del type="crossedOut" hand="#PBS" rend="black ink">was</del>
-                   <add hand="#PBS" place="supralinear">became</add>
-                   assured that my enemy had</l>
+               <l>I<del type="crossedOut" hand="#PBS" rend="blackink">was</del><add hand="#PBS" place="supralinear"rend="blackink">became</add>assured that my enemy had</l>
                <l>indeed fled, I clapped my hands for</l>
                <l>joy and ran down to Henry.</l>
                <l><hi rend="indented">We ascended into my room &amp; present</hi></l>
@@ -54,14 +51,9 @@
                <l>the same place — I jumped over</l>
                <l>the chairs, clapped my hand<add hand="#MWS" place="intralinear">s</add> &amp; laughed</l>
                <l>aloud. Clerval at first attributed</l>
-               <l>my unusual spirits to joy
-                  <del type="crossedOut" hand="#MWS" rend="black ink">at</del>
-                  <add hand="#MWS" place="supralinear">on</add>
-                  his</l>
+               <l>my unusual spirits to joy<del type="crossedOut" hand="#MWS" rend="blackink">at</del><add hand="#MWS" place="supralinear" rend="blackink">on</add>his</l>
                <l>arrival– but when <del type="crossedOut" hand="#MWS" rend="black ink">saw</del> he observed</l>
-               <l>me <add hand="#PBS" place="inline" rend="black ink"><metamark>^</metamark></add>
-                     <add hand="#PBS" place="supralinear">more attentively</add>
-                     he saw a wildness in my eyes for</l>
+               <l>me <add hand="#PBS" place="inline" rend="black ink"><metamark>^</metamark></add><add hand="#PBS" place="supralinear">more attentively</add>he saw a wildness in my eyes for</l>
                <l>which he could not account and</l>
                <l>my loud unrestrained heartless laugh</l>
                <l>-ter frightened and astonished him.</l>
