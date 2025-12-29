@@ -105,14 +105,83 @@ function documentLoader() {
   var PercyArray = Array.from(visible_percy);
     if (event.target.value == 'both') {
     //write an forEach() method that shows all the text written and modified by both hand (in black?). The forEach() method of Array instances executes a provided function once for each array element.
-     
+     MaryArray.forEach(function (el) {
+      el.style.color = 'black';
+      el.style.backgroundColor = 'transparent';
+    });
+
+    PercyArray.forEach(function (el) {
+      el.style.color = 'black';
+      el.style.backgroundColor = 'transparent';
+    });
+
     } else if (event.target.value == 'Mary') {
      //write an forEach() method that shows all the text written and modified by Mary in a different color (or highlight it) and the text by Percy in black. 
-     
+     MaryArray.forEach(function (el) {
+      el.style.color = 'darkred';
+      el.style.backgroundColor = 'transparent';
+    });
+
+    PercyArray.forEach(function (el) {
+      el.style.color = 'black';
+      el.style.backgroundColor = 'transparent';
+    });
+
     } else {
      //write an forEach() method that shows all the text written and modified by Percy in a different color (or highlight it) and the text by Mary in black.
-    
+    MaryArray.forEach(function (el) {
+      el.style.color = 'black';
+      el.style.backgroundColor = 'transparent';
+    });
+
+    PercyArray.forEach(function (el) {
+      el.style.color = 'darkgreen';
+      el.style.backgroundColor = 'transparent';
+    });
     }
   }
 // write another function that will toggle the display of the deletions by clicking on a button
+function toggleDeletions() {
+  var deletions = document.getElementsByClassName('del');
+  var deletionsArray = Array.from(deletions);
+
+  deletionsArray.forEach(function (el) {
+    if (el.style.display === 'none') {
+      el.style.display = 'inline';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+
 // EXTRA: write a function that will display the text as a reading text by clicking on a button or another dropdown list, meaning that all the deletions are removed and that the additions are shown inline (not in superscript)
+function changeViewMode(event) {
+
+  var deletions = Array.from(document.getElementsByClassName('del'));
+  var additions = Array.from(document.getElementsByClassName('add'));
+
+  if (event.target.value === 'reading') {
+
+    deletions.forEach(function (el) {
+      el.style.display = 'none';
+    });
+
+    additions.forEach(function (el) {
+      el.style.display = 'inline';
+      el.style.verticalAlign = 'baseline';
+      el.style.fontSize = 'inherit';
+    });
+
+  } else {
+
+    deletions.forEach(function (el) {
+      el.style.display = 'inline';
+    });
+
+    additions.forEach(function (el) {
+      el.style.display = 'inline';
+      el.style.verticalAlign = 'super';
+      el.style.fontSize = 'smaller';
+    });
+  }
+}

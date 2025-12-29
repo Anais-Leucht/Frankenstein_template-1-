@@ -4,8 +4,10 @@ body {
     line-height: 1.5;
 }
 .starter-template {
-  padding: 40px 15px;
-  text-align: center;
+    padding: 50px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 img {
@@ -13,8 +15,8 @@ img {
 }
 
 p {
-    text-indent: 10px;
-    margin-bottom: 0.8em;
+    text-indent: 1.2em;
+    margin-bottom: 1em;
 }
 
 .row {
@@ -22,6 +24,7 @@ p {
     flex-wrap: nowrap;
     width: 100%;
     margin: 0;
+    gap: 20px;
 }
 
 .col {
@@ -49,6 +52,41 @@ p {
     font-size: 0.9em;
     vertical-align: middle; 
     margin: 0 0.2em;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.del {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.add {
+    vertical-align: super;
+    font-size: 0.75em;
+}
+
+body.index-page .container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body.index-page .starter-template {
+    margin: 0 auto;
+    text-align: center;
+}
+
+body.index-page .row {
+    justify-content: center;
+}
+
+body.index-page .col {
+    max-width: 800px;
 }
 
 
