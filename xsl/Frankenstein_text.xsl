@@ -18,7 +18,6 @@
         </html>
     </xsl:template>
 
-    
     <xsl:output method="xml" omit-xml-declaration="yes" indent="yes" />
     <xsl:template match="tei:teiHeader"/>
 
