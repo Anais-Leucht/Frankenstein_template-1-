@@ -3,9 +3,23 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="xs tei"
-    version="2.0">
+    version="1.0">
+
+    <xsl:template match="/">
+        <html>
+            <head>
+                <meta charset="UTF-8"/>
+                <title>TEI Document</title>
+                <link rel="stylesheet" href="/css/styles.css"/>
+            </head>
+            <body>
+                <xsl:apply-templates select="//tei:body"/>
+            </body>
+        </html>
+    </xsl:template>
+
     
-    <!-- <xsl:output method="xml" omit-xml-declaration="yes" indent="yes" /> -->
+    <xsl:output method="xml" omit-xml-declaration="yes" indent="yes" />
     <xsl:template match="tei:teiHeader"/>
 
     <xsl:template match="tei:body">
