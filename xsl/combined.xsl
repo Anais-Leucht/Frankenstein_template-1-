@@ -13,7 +13,7 @@
       <head>
         <meta charset="UTF-8"/>
         <title>TEI Document</title>
-        <link rel="stylesheet" href="/Frankenstein_template-1-/css/styles.css"/>
+        <link rel="stylesheet" href="/Frankenstein_template-1-/css/style.css"/>
         <style>
           .marginLeft { color: blue; font-style: italic; }
           .circledPage { font-weight: bold; }
