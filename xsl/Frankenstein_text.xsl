@@ -1,137 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:tei="http://www.tei-c.org/ns/1.0"
-    version="1.0"
-    exclude-result-prefixes="tei">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:tei="http://www.tei-c.org/ns/1.0"
+                version="1.0">
 
-    <xsl:import href="meta.xsl"/>
+  <!-- OUTPUT AS HTML -->
+  <xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
-    <xsl:output method="html" encoding="UTF-8" indent="yes"/>
+  <!-- ROOT TEMPLATE -->
+  <xsl:template match="/">
+    <html>
+      <head>
+        <meta charset="UTF-8"/>
+        <title>Frankenstein TEI Edition</title>
+        <!-- CSS relative to XML location (/xml --> ../css/style.css) -->
+        <link rel="stylesheet" href="../css/style.css"/>
+      </head>
+      <body>
+        <!-- Render metadata -->
+        <xsl:apply-templates select="//tei:teiHeader"/>
+        <!-- Render main text body -->
+        <xsl:apply-templates select="//tei:body"/>
+      </body>
+    </html>
+  </xsl:template>
 
-    <xsl:template match="/">
-        <html>
-            <head>
-                <meta charset="UTF-8"/>
-                <title>TEI Document</title>
-                <link rel="stylesheet" href="../css/style.css"/>
-            </head>
-            <body>
-                <xsl:call-template name="render-meta"/>
-                <xsl:apply-templates select="//tei:body"/>
-            </body>
-        </html>
-    </xsl:template>
+  <!-- TEI HEADER -->
+  <xsl:template match="tei:teiHeader">
+    <div class="tei-header">
+      <h2>About this Manuscript</h2>
+      <table class="metadata">
+        <tr><th>Title</th><td><xsl:value-of select=".//tei:title"/></td></tr>
+        <tr><th>Author</th><td><xsl:value-of select=".//tei:author"/></td></tr>
+        <tr><th>Editor</th><td><xsl:value-of select=".//tei:editor"/></td></tr>
+        <tr><th>Licence</th><td><xsl:value-of select=".//tei:licence"/></td></tr>
+      </table>
+      <ul>
+        <li>Total modifications: <xsl:value-of select="count(//tei:del | //tei:add)"/></li>
+        <li>Total additions: <xsl:value-of select="count(//tei:add)"/></li>
+        <li>Mary: <xsl:value-of select="count(//tei:del[@hand='#MWS'] | //tei:add[@hand='#MWS'])"/></li>
+        <li>Percy: <xsl:value-of select="count(//tei:del[@hand='#PBS'] | //tei:add[@hand='#PBS'])"/></li>
+      </ul>
+    </div>
+  </xsl:template>
 
-    <xsl:output method="html" encoding="UTF-8" indent="yes"/>
-    <xsl:template match="tei:teiHeader"/>
+  <!-- BODY -->
+  <xsl:template match="tei:body">
+    <div class="tei-body">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
 
-    <xsl:template match="tei:body">
-        <div class="row">
-        <div class="col-3"><br/><br/><br/><br/><br/>
-            <xsl:for-each select="//tei:add[@place = 'marginleft']">
-                <div class="marginLeft">
-                    <xsl:choose>
-                        <xsl:when test="parent::tei:del">
-                            <del>
-                                <xsl:attribute name="class">
-                                    <xsl:value-of select="attribute::hand" />
-                                </xsl:attribute>
-                                <xsl:apply-templates/></del><br/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <span>
-                                <xsl:attribute name="class">
-                                    <xsl:value-of select="attribute::hand" />
-                                </xsl:attribute>
-                            <xsl:apply-templates/><br/>
-                            </span>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </div>
-            </xsl:for-each> 
-        </div>
-        <div class="col-9">
-            <div class="transcription">
-                <xsl:apply-templates select="//tei:div"/>
-            </div>
-        </div>
-        </div> 
-    </xsl:template>
-    
-    <xsl:template match="tei:div">
-        <div class="MWS"><xsl:apply-templates/></div>
-    </xsl:template>
-    
-    <xsl:template match="tei:p">
-        <p><xsl:apply-templates/></p>
-    </xsl:template>
+  <!-- DIVS -->
+  <xsl:template match="tei:div">
+    <div class="tei-div">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
 
-  <!-- processes the marginal additions again to give them a class to hide them in the 'main' text in css. By hiding them using css, they can also be made visible again when showing a reading text, for example-->
-    <xsl:template match="tei:add[@place = 'marginleft']">
-        <span class="marginAdd">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
+  <!-- PARAGRAPHS -->
+  <xsl:template match="tei:p">
+    <p><xsl:apply-templates/></p>
+  </xsl:template>
 
-    
-    <xsl:template match="tei:del">
-        <del>
-            <xsl:attribute name="class">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
-            <xsl:apply-templates/>
-        </del>
-    </xsl:template>
-    
-    <!-- all the supralinear additions are given in a span with the class supraAdd, make sure to put this class in superscript in the CSS file, -->
-    <xsl:template match="tei:add[@place = 'supralinear']">
-        <span class="supraAdd">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
-    
-    
-    <!-- add additional templates below, for example to transform the tei:lb in <br/> empty elements, tei:hi[@rend = 'sup'] in <sup> elements, the underlined text, additions with the attribute "overwritten" etc. -->
-    
-    <xsl:template match="tei:lb">
-        <br/>
-    </xsl:template>
+  <!-- MARGINAL ADDITIONS -->
+  <xsl:template match="tei:add[@place='marginleft']">
+    <span class="marginAdd"><xsl:apply-templates/></span>
+  </xsl:template>
 
-    <xsl:template match="tei:hi[@rend = 'underline']">
-        <u>
-            <xsl:apply-templates/>
-        </u>
-    </xsl:template>
+  <!-- DELETIONS -->
+  <xsl:template match="tei:del">
+    <del class="{@hand}"><xsl:apply-templates/></del>
+  </xsl:template>
 
-    <xsl:template match="tei:hi[@rend = 'sup']">
-        <sup>
-            <xsl:apply-templates/>
-        </sup>
-    </xsl:template>
+  <!-- SUPRALINEAR ADDITIONS -->
+  <xsl:template match="tei:add[@place='supralinear']">
+    <span class="supraAdd"><xsl:apply-templates/></span>
+  </xsl:template>
 
-    <xsl:template match="tei:hi[@rend = 'sub']">
-        <sub>
-            <xsl:apply-templates/>
-        </sub>
-    </xsl:template>
+  <!-- OVERWRITTEN TEXT -->
+  <xsl:template match="tei:add[@place='overwritten']">
+    <span class="overwritten"><xsl:apply-templates/></span>
+  </xsl:template>
 
-    <xsl:template match="tei:hi">
-        <span class="{@rend}">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
+  <!-- LINE BREAKS -->
+  <xsl:template match="tei:lb">
+    <br/>
+  </xsl:template>
 
-    <xsl:template match="tei:add[@place='overwritten']">
-        <span class="overwritten">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
+  <!-- HIGHLIGHT RENDITIONS -->
+  <xsl:template match="tei:hi[@rend='underline']">
+    <u><xsl:apply-templates/></u>
+  </xsl:template>
+  <xsl:template match="tei:hi[@rend='sup']">
+    <sup><xsl:apply-templates/></sup>
+  </xsl:template>
+  <xsl:template match="tei:hi[@rend='sub']">
+    <sub><xsl:apply-templates/></sub>
+  </xsl:template>
+  <xsl:template match="tei:hi">
+    <span class="{@rend}"><xsl:apply-templates/></span>
+  </xsl:template>
 
-    <xsl:template match="tei:pb">
-        <span class="circledPage">
-            <xsl:value-of select="@n"/>
-        </span>
-    </xsl:template>
+  <!-- PAGE BREAKS -->
+  <xsl:template match="tei:pb">
+    <span class="circledPage"><xsl:value-of select="@n"/></span>
+  </xsl:template>
 
 </xsl:stylesheet>
