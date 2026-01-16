@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xsl:stylesheet 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="xs tei"
-    version="1.0">
+    version="1.0"
+    exclude-result-prefixes="tei">
+
+    <xsl:import href="meta.xsl"/>
+
+    <xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
     <xsl:template match="/">
         <html>
@@ -11,7 +15,6 @@
                 <meta charset="UTF-8"/>
                 <title>TEI Document</title>
                 <link rel="stylesheet" href="/Frankenstein_template-1-/css/style.css"/>
-                <xsl:import href="meta.xsl"/>
             </head>
             <body>
                 <xsl:call-template name="render-meta"/>
