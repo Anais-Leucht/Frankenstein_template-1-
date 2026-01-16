@@ -10,15 +10,17 @@
             <head>
                 <meta charset="UTF-8"/>
                 <title>TEI Document</title>
-                <link rel="stylesheet" href="/css/styles.css"/>
+                <link rel="stylesheet" href="/Frankenstein_template-1-/css/style.css"/>
+                <xsl:import href="meta.xsl"/>
             </head>
             <body>
+                <xsl:call-template name="render-meta"/>
                 <xsl:apply-templates select="//tei:body"/>
             </body>
         </html>
     </xsl:template>
 
-    <xsl:output method="xml" omit-xml-declaration="yes" indent="yes" />
+    <xsl:output method="html" encoding="UTF-8" indent="yes"/>
     <xsl:template match="tei:teiHeader"/>
 
     <xsl:template match="tei:body">
