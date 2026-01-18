@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns:tei="http://www.tei-c.org/ns/1.0">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8".>
@@ -14,15 +13,14 @@
     <title>Frankenstein Edition</title>
     <link href="/css/style.css" rel="stylesheet">
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Frankenstein</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <a class="nav-link" href="/index.html">Home</a>
+            <a class="nav-link" href="/index.html">Home</a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Pages
@@ -43,25 +41,63 @@
         </ul>
       </div>
     </nav>
-    <div class="container-fluid">
-      <h1>Frankenstein Volume I Draft in Chapter Sequence</h1>
-      <span style="visibility:hidden" id='page'>49</span>
-      <h2 id='folio'>23v</h2> <!-- you can style this h2 element differently, but you should keep the id="folio" and the elements value *unchanged* -->
-      <div id="stats"></div>
-      <div class="form-group">
-        <select class="form-control" id="sel-hand" onChange="selectHand(event)">
-          <option value="both">Both Hands</option>
-          <option value="Mary">Mary Shelley's Hand Highlighted</option>
-          <option value="Percy">Percy Shelley's Hand Highlighted</option>
-        </select>
+      <div class="tei-header">
+         <h2>About this Manuscript</h2>
+         <table class="metadata">
+            <tr>
+               <th>Title</th>
+               <td>Frankenstein</td>
+            </tr>
+            <tr>
+               <th>Author</th>
+               <td>Mary Wollstonecraft Shelley</td>
+            </tr>
+            <tr>
+               <th>Editor</th>
+               <td>Percy Bysshe Shelley</td>
+            </tr>
+            <tr>
+               <th>Licence</th>
+               <td>
+                  Original text by Mary Shelley (1816). Public domain, under a CC-BY-NC 4.0 licence.
+                  
+               </td>
+            </tr>
+         </table>
+         <ul>
+            <li>Total modifications: 6</li>
+            <li>Total additions: 1</li>
+            <li>Mary: 6</li>
+            <li>Percy: 0</li>
+         </ul>
       </div>
-      <div class="row">
-        <div class="col-5">   
-            <div id="my-mirador"></div>
-        </div>
-        <div class="col-7" id="text"></div>
-      </div>
-    </div>
+      <div class="tei-body">
+         
+         <div class="tei-div">
+            <span class="circledPage"></span>
+            <span class="circled">84</span>
+            
+            <p>
+               room - <del class="#MWS">Wh</del> He can tell! Oh save me<br>
+               save <del class="#MWS">I</del> me"- I imagined that the<br>
+               monster seized me I struggled furious<br>
+               ly &amp; fell down in a fit<br>
+               
+            </p>
+            
+            <p>
+               <span class="indented">Poor Clerval! What must have been</span><br>
+               his feelings. A <del class="#MWS">joy meti</del> meeting which<br>
+               he had anticipated with such joy so<br>
+               strangely turned to bitterness. But I<br>
+               did not witness his grief for I was<br>
+               <del class="#MWS">senseless</del><span class="supraAdd">lifeless</span> and did not recover my<br>
+               senses for <del class="#MWS">several</del> a long, long time.<br>
+               
+            </p>
+            
+         </div>
+         
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
