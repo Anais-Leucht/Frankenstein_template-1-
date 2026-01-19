@@ -3,10 +3,8 @@
                 xmlns:tei="http://www.tei-c.org/ns/1.0"
                 version="1.0">
 
-  <!-- OUTPUT AS HTML -->
   <xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
-  <!-- ROOT TEMPLATE -->
   <xsl:template match="/">
     <html>
       <head>
@@ -18,9 +16,8 @@
         <script src="https://unpkg.com/mirador/dist/mirador.min.js"></script>
       </head>
       <body>
-        <!-- Render metadata -->
+
         <xsl:apply-templates select="//tei:teiHeader"/>
-        <!-- Render main text body -->
         <xsl:apply-templates select="//tei:body"/>
         <script>
           Mirador.viewer({
@@ -36,7 +33,6 @@
     </html>
   </xsl:template>
 
-  <!-- TEI HEADER -->
   <xsl:template match="tei:teiHeader">
     <div class="tei-header">
       <h2>About this Manuscript</h2>
@@ -55,51 +51,44 @@
     </div>
   </xsl:template>
 
-  <!-- BODY -->
+
   <xsl:template match="tei:body">
     <div class="tei-body">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
 
-  <!-- DIVS -->
+
   <xsl:template match="tei:div">
     <div class="tei-div">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
 
-  <!-- PARAGRAPHS -->
   <xsl:template match="tei:p">
     <p><xsl:apply-templates/></p>
   </xsl:template>
 
-  <!-- MARGINAL ADDITIONS -->
   <xsl:template match="tei:add[@place='marginleft']">
     <span class="marginAdd"><xsl:apply-templates/></span>
   </xsl:template>
 
-  <!-- DELETIONS -->
   <xsl:template match="tei:del">
     <del class="{@hand}"><xsl:apply-templates/></del>
   </xsl:template>
 
-  <!-- SUPRALINEAR ADDITIONS -->
   <xsl:template match="tei:add[@place='supralinear']">
     <span class="supraAdd"><xsl:apply-templates/></span>
   </xsl:template>
 
-  <!-- OVERWRITTEN TEXT -->
   <xsl:template match="tei:add[@place='overwritten']">
     <span class="overwritten"><xsl:apply-templates/></span>
   </xsl:template>
 
-  <!-- LINE BREAKS -->
   <xsl:template match="tei:lb">
     <br/>
   </xsl:template>
 
-  <!-- HIGHLIGHT RENDITIONS -->
   <xsl:template match="tei:hi[@rend='underline']">
     <u><xsl:apply-templates/></u>
   </xsl:template>
@@ -113,7 +102,6 @@
     <span class="{@rend}"><xsl:apply-templates/></span>
   </xsl:template>
 
-  <!-- PAGE BREAKS -->
   <xsl:template match="tei:pb">
     <span class="circledPage"><xsl:value-of select="@n"/></span>
   </xsl:template>
